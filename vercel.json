@@ -1,4 +1,6 @@
 {
+  "buildCommand": null,
+  "outputDirectory": "public",
   "headers": [
     {
       "source": "/.well-known/apple-app-site-association",
@@ -8,7 +10,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/record/:id", "destination": "/index.html" },
-    { "source": "/crate/:id", "destination": "/index.html" }
+    { "source": "/record/:path*", "destination": "/index.html" },
+    { "source": "/crate/:path*", "destination": "/index.html" }
   ]
 }
