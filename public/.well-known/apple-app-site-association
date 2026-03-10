@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "8CTC37BL8Z.com.spindig.app",
+        "paths": [
+          "/record/*",
+          "/crate/*"
+        ]
+      }
+    ]
+  }
+}

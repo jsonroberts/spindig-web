@@ -1,0 +1,14 @@
+{
+  "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/record/:id", "destination": "/index.html" },
+    { "source": "/crate/:id", "destination": "/index.html" }
+  ]
+}
