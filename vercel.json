@@ -10,7 +10,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/record/:path*", "destination": "/index.html" },
-    { "source": "/crate/:path*", "destination": "/index.html" }
+    { "source": "/record/:id", "destination": "/api/record?id=:id" },
+    { "source": "/crate/:id", "destination": "/api/crate?id=:id" }
   ]
 }

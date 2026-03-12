@@ -4,75 +4,558 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spindig — Discover Vinyl</title>
+
+  <!-- SEO & Social -->
+  <meta name="description" content="Curated vinyl discovery. Swipe through handpicked records, preview tracks, and find where to buy.">
+  <meta property="og:title" content="Spindig — Discover Vinyl">
+  <meta property="og:description" content="Curated vinyl discovery. Swipe through handpicked records, preview tracks, and find where to buy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digspindig.com">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spindig — Discover Vinyl">
+  <meta name="twitter:description" content="Curated vinyl discovery. Swipe through handpicked records, preview tracks, and find where to buy.">
+
+  <!-- Apple Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=6759798846">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230d0d0d'/><circle cx='50' cy='50' r='44' fill='%23111' stroke='%231a1a1a' stroke-width='1'/><circle cx='50' cy='50' r='18' fill='%230d0d0d' stroke='%23222' stroke-width='1'/><circle cx='50' cy='50' r='5' fill='%23CC6B2C'/></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg-base: #0d0d0d;
+      --bg-elevated: #151515;
+      --bg-surface: #1a1a1a;
+      --bg-border: #1f1f1f;
+      --text-primary: #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-tertiary: #6a6a6a;
+      --text-muted: #4a4a4a;
+      --text-disabled: #3a3a3a;
+      --accent: #CC6B2C;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      background: #0d0d0d;
-      color: #f5f5f5;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 24px;
-    }
-    .container {
+      padding: 80px 24px 60px;
       text-align: center;
-      max-width: 400px;
+      position: relative;
     }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(204, 107, 44, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 480px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== VINYL RECORD ===== */
+    .vinyl-container {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      margin: 0 auto;
+    }
+
+    .vinyl-record {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      background:
+        radial-gradient(circle at center,
+          var(--accent) 0%, var(--accent) 11%,
+          #1a1a1a 11%, #1a1a1a 12.5%,
+          #111 12.5%, #0f0f0f 14%,
+          #131313 14%, #111 15.5%,
+          #0f0f0f 15.5%, #131313 17%,
+          #111 17%, #0f0f0f 18.5%,
+          #131313 18.5%, #111 20%,
+          #0f0f0f 20%, #131313 21.5%,
+          #111 21.5%, #0f0f0f 23%,
+          #131313 23%, #111 24.5%,
+          #0f0f0f 24.5%, #131313 26%,
+          #111 26%, #0f0f0f 27.5%,
+          #131313 27.5%, #111 29%,
+          #0f0f0f 29%, #131313 30.5%,
+          #111 30.5%, #0f0f0f 32%,
+          #131313 32%, #111 33.5%,
+          #0f0f0f 33.5%, #131313 35%,
+          #111 35%, #0f0f0f 36.5%,
+          #131313 36.5%, #111 38%,
+          #0f0f0f 38%, #131313 39.5%,
+          #111 39.5%, #0f0f0f 41%,
+          #131313 41%, #111 42.5%,
+          #0f0f0f 42.5%, #131313 44%,
+          #111 44%, #0f0f0f 45.5%,
+          #131313 45.5%, #0d0d0d 48%
+        ),
+        radial-gradient(circle at center,
+          transparent 47%, #1a1a1a 47%, #1a1a1a 49%, #0d0d0d 49%
+        ),
+        radial-gradient(circle at center, #111 0%, #0a0a0a 100%);
+      box-shadow:
+        0 0 0 2px #1a1a1a,
+        0 16px 48px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(204, 107, 44, 0.05);
+      animation: spin 6s linear infinite;
+    }
+
+    .vinyl-record::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.04) 0%,
+        transparent 45%,
+        transparent 55%,
+        rgba(255, 255, 255, 0.02) 100%
+      );
+    }
+
+    .vinyl-record::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--bg-base);
+      z-index: 2;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .vinyl-container:hover .vinyl-record {
+      animation-duration: 12s;
+    }
+
+    /* ===== LOGO & TEXT ===== */
     .logo {
-      font-size: 42px;
+      font-family: var(--font-display);
       font-weight: 700;
-      letter-spacing: -1.5px;
-      margin-bottom: 8px;
+      font-size: 48px;
+      letter-spacing: -2px;
+      margin-top: 36px;
+      color: var(--text-primary);
     }
+
     .tagline {
-      color: #6a6a6a;
-      font-size: 16px;
-      letter-spacing: 0.2px;
-      margin-bottom: 48px;
-    }
-    .message {
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-    .hint {
-      color: #4a4a4a;
+      font-family: var(--font-body);
       font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 40px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.3px;
+      margin-top: 8px;
     }
+
+    .hero-description {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-top: 28px;
+      max-width: 340px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== BUTTONS ===== */
     .btn {
-      display: inline-block;
-      background: #1a1a1a;
-      color: #f5f5f5;
-      border: 1px solid #1f1f1f;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       padding: 16px 36px;
       border-radius: 32px;
+      font-family: var(--font-body);
       font-size: 16px;
       font-weight: 600;
       text-decoration: none;
       letter-spacing: 0.2px;
-      transition: background 0.2s;
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
+      border: none;
     }
-    .btn:hover { background: #252525; }
-    .footer {
-      margin-top: 48px;
-      color: #3a3a3a;
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--bg-border);
+      margin-top: 36px;
+    }
+
+    .btn-primary:hover {
+      background: #222;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+      margin-top: 32px;
+    }
+
+    .btn-accent:hover {
+      background: #b85e26;
+      box-shadow: 0 8px 32px rgba(204, 107, 44, 0.25);
+    }
+
+    .btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ===== FEATURES ===== */
+    .features {
+      padding: 40px 24px 80px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .features-label {
+      font-family: var(--font-display);
+      font-weight: 500;
       font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: 22px;
+      padding: 28px 24px;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 19px;
+      letter-spacing: -0.3px;
+      margin-top: 16px;
+      color: var(--text-primary);
+    }
+
+    .feature-card p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works {
+      padding: 60px 24px 80px;
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .how-it-works h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: -0.5px;
+      margin-bottom: 40px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+
+    .step-text h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      color: var(--text-primary);
+    }
+
+    .step-text p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      padding: 60px 24px 80px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -1px;
+    }
+
+    .cta .subtitle {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-top: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 40px 24px;
+      text-align: center;
+      border-top: 1px solid var(--bg-border);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-disabled);
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--bg-border);
+      margin: 0 auto;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 640px) {
+      .logo { font-size: 56px; }
+
+      .vinyl-container {
+        width: 280px;
+        height: 280px;
+      }
+
+      .hero-description {
+        font-size: 18px;
+        max-width: 380px;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .cta h2 { font-size: 42px; }
+    }
+
+    @media (min-width: 960px) {
+      .logo { font-size: 64px; }
+
+      .vinyl-container {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      .vinyl-record {
+        animation: none;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="logo">spindig</div>
-    <div class="tagline">discover vinyl, one record at a time</div>
-    <p class="message">Someone shared a record with you.</p>
-    <p class="hint">Download Spindig to discover curated vinyl picks, preview tracks, and find where to buy.</p>
-    <a class="btn" href="https://apps.apple.com/app/spindig/id6759798846">Download on the App Store</a>
-    <div class="footer">Available on iOS</div>
-  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="vinyl-container">
+        <div class="vinyl-record"></div>
+      </div>
+      <h1 class="logo">spindig</h1>
+      <p class="tagline">discover vinyl, one record at a time</p>
+      <p class="hero-description">Curated crates of handpicked records. Swipe to discover, preview tracks, and find where to buy.</p>
+      <a class="btn btn-primary" href="https://apps.apple.com/app/spindig/id6759798846">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on the App Store
+      </a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <p class="features-label">Why Spindig</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/><circle cx="12" cy="16" r="2"/></svg>
+        </div>
+        <h3>Curated Crates</h3>
+        <p>Handpicked records organized by vibe, genre, and mood. Not algorithms — taste.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </div>
+        <h3>Swipe to Discover</h3>
+        <p>Like crate-digging, but your fingers stay clean. Right to save, left to pass.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Preview & Buy</h3>
+        <p>Hear a 30-second preview, then find it on Discogs, eBay, or Amazon. No middleman.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-number">1</span>
+        <div class="step-text">
+          <h3>Pick a crate</h3>
+          <p>Browse curated crates — each one a collection of records with a point of view.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <div class="step-text">
+          <h3>Swipe through records</h3>
+          <p>See the artwork, read the story, swipe up to preview a track. Right to save, left to skip.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <div class="step-text">
+          <h3>Build your collection</h3>
+          <p>Saved records go to your collection. When you're ready to buy, we link you straight to the seller.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="divider" style="margin-bottom: 60px;"></div>
+    <h2>Start digging.</h2>
+    <p class="subtitle">Free on iOS. No account required.</p>
+    <a class="btn btn-accent" href="https://apps.apple.com/app/spindig/id6759798846">Get Spindig</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/privacy">Privacy</a>
+      <a href="/support">Support</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Spindig</p>
+  </footer>
+
 </body>
 </html>

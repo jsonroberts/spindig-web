@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Spindig</title>
+  <meta name="description" content="Get help with Spindig.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230d0d0d'/><circle cx='50' cy='50' r='44' fill='%23111' stroke='%231a1a1a' stroke-width='1'/><circle cx='50' cy='50' r='18' fill='%230d0d0d' stroke='%23222' stroke-width='1'/><circle cx='50' cy='50' r='5' fill='%23CC6B2C'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-base: #0d0d0d;
+      --bg-elevated: #151515;
+      --bg-surface: #1a1a1a;
+      --bg-border: #1f1f1f;
+      --text-primary: #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-tertiary: #6a6a6a;
+      --text-disabled: #3a3a3a;
+      --accent: #CC6B2C;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg-base);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      padding: 48px 24px;
+    }
+    .content {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .back {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 40px;
+      transition: color 0.2s;
+    }
+    .back:hover { color: var(--text-secondary); }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: -1px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .intro {
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    .faq-item {
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+    .faq-item h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .contact-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .contact-card h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .contact-card p {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    .contact-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 32px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .contact-btn:hover {
+      background: #b85e26;
+    }
+    a { color: var(--accent); }
+    .footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--bg-border);
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text-disabled);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .footer-logo:hover { color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <a class="back" href="/">&larr; Back to Spindig</a>
+
+    <h1>Support</h1>
+    <p class="intro">Got a question about Spindig? Check the FAQ below or get in touch.</p>
+
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <h3>What is Spindig?</h3>
+      <p>Spindig is a vinyl record discovery app. Browse curated crates of handpicked records, swipe to discover new music, preview tracks, and find where to buy.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I save a record?</h3>
+      <p>Swipe right on a record to save it. You can find all your saved records in the My Records tab.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I preview a track?</h3>
+      <p>Swipe up on a record card to hear a 30-second preview. Tap the preview bar to stop playback.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Where can I buy the records?</h3>
+      <p>Open any saved record and you'll find buy links for Discogs, eBay, and Amazon at the bottom of the page.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Do I need an account?</h3>
+      <p>No. Spindig works without any account or login. Your collection is stored locally on your device.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I get back records I passed on?</h3>
+      <p>Close and reopen the app to get a fresh set of crates. Records you previously passed on may reappear in the rotation.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is Spindig available on Android?</h3>
+      <p>Not yet. Spindig is currently available on iOS only.</p>
+    </div>
+
+    <div class="contact-card">
+      <h3>Still need help?</h3>
+      <p>Send us an email and we'll get back to you.</p>
+      <a class="contact-btn" href="mailto:support@digspindig.com">Email Support</a>
+    </div>
+
+    <div class="footer">
+      <a class="footer-logo" href="/">spindig</a>
+    </div>
+  </div>
+</body>
+</html>
