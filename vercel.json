@@ -1,6 +1,7 @@
 {
   "buildCommand": null,
   "outputDirectory": "public",
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/.well-known/apple-app-site-association",
