@@ -97,19 +97,29 @@
     <a class="back" href="/">&larr; Back to Spindig</a>
 
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: March 12, 2026</p>
+    <p class="updated">Last updated: April 16, 2026</p>
 
     <p>Spindig is a vinyl record discovery app. We respect your privacy and aim to collect as little data as possible.</p>
 
     <h2>What We Collect</h2>
-    <p>Spindig does not require an account. We use an anonymous device identifier (generated randomly on your device) to track your saved records and browsing history within the app. This identifier is not linked to your name, email, or any personal information.</p>
+    <p>Spindig does not require an account. We use an anonymous device identifier (generated randomly on your device) to track your saved records and browsing history. This identifier is not linked to your name, email, or any personal information.</p>
 
     <h2>Data Stored on Your Device</h2>
     <ul>
       <li>Saved record IDs (your collection)</li>
+      <li>Personal crates you create</li>
       <li>Seen record IDs per crate (so you don't see the same records twice)</li>
+      <li>Optional display name (only if you set one)</li>
       <li>Anonymous device ID</li>
     </ul>
+
+    <h2>Data Stored on Our Servers</h2>
+    <p>To keep your collection in sync and to enable the community feed, we store the following on our backend (Supabase), keyed only to your anonymous device ID:</p>
+    <ul>
+      <li>Saved record IDs and seen history</li>
+      <li>Community crates you choose to publish (crate name, curated records, and the optional display name you set)</li>
+    </ul>
+    <p>We do not store your name, email, address, location, or any other personal information.</p>
 
     <h2>Analytics</h2>
     <p>We use PostHog for anonymous analytics to understand how the app is used (e.g., which features are popular, crash rates). Analytics data is not tied to your identity and does not include personal information.</p>
@@ -137,8 +147,10 @@
     <h2>Data Sharing</h2>
     <p>We do not sell, rent, or share your data with third parties for advertising or marketing purposes.</p>
 
-    <h2>Data Deletion</h2>
-    <p>Since we don't collect personal data, there is nothing to delete. You can clear your app data at any time by deleting and reinstalling the app.</p>
+    <h2 id="data-deletion">Data Deletion</h2>
+    <p>You can clear all local data on your device at any time by deleting and reinstalling the app.</p>
+    <p>To request deletion of server-side data associated with your device (saved records, seen history, and any community crates you've published), email <a href="mailto:privacy@digspindig.com">privacy@digspindig.com</a>. Please include the names of any community crates you've published (if any) so we can locate and remove the associated records. We will process deletion requests within 30 days.</p>
+    <p>You can also report or hide any community crate directly from within the app using the <strong>&hellip;</strong> menu on any community crate.</p>
 
     <h2>Changes to This Policy</h2>
     <p>We may update this policy from time to time. Changes will be posted on this page with an updated date.</p>
