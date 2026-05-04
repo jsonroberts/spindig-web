@@ -1,12 +1,14 @@
 import { ImageResponse } from '@vercel/og';
 
-// Tiny createElement helper — avoids needing JSX compilation in plain .js
+export const config = { runtime: 'edge' };
+
+// Tiny createElement helper — avoids needing JSX compilation
 function h(type, props, ...children) {
   return { type, props: { ...(props || {}), children: children.flat() } };
 }
 
 export default async function handler(req) {
-  const { searchParams } = new URL(req.url, `https://${req.headers.host}`);
+  const { searchParams } = new URL(req.url);
   const slug = searchParams.get('slug');
 
   if (!slug) {
