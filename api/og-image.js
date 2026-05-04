@@ -1,9 +1,7 @@
 import { ImageResponse } from '@vercel/og';
 
-export const config = { runtime: 'edge' };
-
 export default async function handler(req) {
-  const { searchParams } = new URL(req.url);
+  const { searchParams } = new URL(req.url, `https://${req.headers.host}`);
   const slug = searchParams.get('slug');
 
   if (!slug) {
