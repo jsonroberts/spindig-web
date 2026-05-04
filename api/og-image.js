@@ -1,10 +1,12 @@
 import { ImageResponse } from '@vercel/og';
+import { createElement } from 'react';
 
 export const config = { runtime: 'edge' };
 
-// Tiny createElement helper — avoids needing JSX compilation
+// Wrapper around React.createElement so the rest of the file stays compact.
+// Using real React elements (not plain objects) is required for satori/@vercel/og.
 function h(type, props, ...children) {
-  return { type, props: { ...(props || {}), children: children.flat() } };
+  return createElement(type, props || {}, ...children.flat());
 }
 
 export default async function handler(req) {
