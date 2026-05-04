@@ -1,5 +1,4 @@
 import { ImageResponse } from '@vercel/og';
-import { createClient } from '@supabase/supabase-js';
 
 export const config = { runtime: 'edge' };
 
@@ -18,13 +17,22 @@ export default async function handler(req) {
     return new Response('Not configured', { status: 500 });
   }
 
-  const supabase = createClient(supabaseUrl, supabaseKey);
-  const { data } = await supabase
-    .from('shared_crates')
-    .select('name, records, record_count, creator_display_name, vibe_tags, crate_type, shop_name, verified')
-    .eq('slug', slug)
-    .single();
+  const select = 'name,records,record_count,creator_display_name,vibe_tags,crate_type,shop_name,verified';
+  const restUrl = `${supabaseUrl}/rest/v1/shared_crates?slug=eq.${encodeURIComponent(slug)}&select=${select}`;
 
+  const res = await fetch(restUrl, {
+    headers: {
+      apikey: supabaseKey,
+      Authorization: `Bearer ${supabaseKey}`,
+      Accept: 'application/vnd.pgrst.object+json',
+    },
+  });
+
+  if (!res.ok) {
+    return new Response('Not found', { status: 404 });
+  }
+
+  const data = await res.json();
   if (!data) {
     return new Response('Not found', { status: 404 });
   }
