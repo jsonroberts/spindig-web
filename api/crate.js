@@ -240,6 +240,32 @@ function renderFullCratePage(crate, slug) {
       letter-spacing: 0.1px;
     }
 
+    /* ===== OPEN IN APP CTA ===== */
+    .open-app-bar {
+      text-align: center;
+      padding: 0 0 24px;
+    }
+
+    .btn-open-app {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 28px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-open-app:hover {
+      background: #b85e26;
+      box-shadow: 0 8px 24px rgba(204, 107, 44, 0.25);
+    }
+
     /* ===== RECORDS ===== */
     .records-section {
       padding-bottom: 16px;
@@ -648,6 +674,13 @@ function renderFullCratePage(crate, slug) {
       </div>` : ''}
     </header>
 
+    <div class="open-app-bar">
+      <a class="btn-open-app" href="spindig://c/${escapeHtml(slug)}" onclick="tryOpenApp(event)">
+        <span>Open in Spindig</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
     <section class="records-section">
       <p class="records-label">In This Crate</p>
       <div class="records-list">
@@ -677,6 +710,26 @@ function renderFullCratePage(crate, slug) {
   </div>
 
   <script>
+  // Try opening Spindig via spindig:// scheme. If the app isn't installed,
+  // iOS silently does nothing — after 1.5s we redirect to the App Store.
+  window.tryOpenApp = function(e) {
+    var href = e && e.currentTarget && e.currentTarget.getAttribute('href');
+    if (!href) return;
+    var didLeave = false;
+    var visibilityHandler = function() {
+      if (document.hidden) didLeave = true;
+    };
+    document.addEventListener('visibilitychange', visibilityHandler);
+
+    setTimeout(function() {
+      document.removeEventListener('visibilitychange', visibilityHandler);
+      if (!didLeave) {
+        window.location.href = 'https://apps.apple.com/app/spindig/id6759798846';
+      }
+    }, 1500);
+    // Let the default <a href="spindig://..."> navigation happen.
+  };
+
   (function() {
     var currentAudio = null;
     var currentBtn = null;
