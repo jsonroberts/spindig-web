@@ -723,38 +723,11 @@ function renderFullCratePage(crate, slug) {
       btn.querySelector('span').textContent = 'Loading...';
 
       try {
-        var q = encodeURIComponent(artist + ' ' + title);
-
-        // Try album search first (gets Track 1 — vinyl logic)
-        var albumRes = await fetch('https://api.deezer.com/search/album?q=' + q + '&limit=5');
-        var albumData = await albumRes.json();
-        var albums = (albumData && albumData.data) || [];
-        var previewUrl = null;
-
-        for (var i = 0; i < albums.length; i++) {
-          if (!artistMatches(artist, albums[i].artist.name)) continue;
-          var tlRes = await fetch('https://api.deezer.com/album/' + albums[i].id + '/tracks');
-          var tlData = await tlRes.json();
-          var tracks = (tlData && tlData.data) || [];
-          tracks.sort(function(a, b) { return (a.track_position || 0) - (b.track_position || 0); });
-          var t1 = tracks.find(function(t) { return t.track_position === 1 && t.preview; });
-          if (t1) { previewUrl = t1.preview; break; }
-          var any = tracks.find(function(t) { return t.preview; });
-          if (any) { previewUrl = any.preview; break; }
-        }
-
-        // Fallback: general track search
-        if (!previewUrl) {
-          var res = await fetch('https://api.deezer.com/search?q=' + q + '&limit=10');
-          var data = await res.json();
-          var results = (data && data.data) || [];
-          for (var j = 0; j < results.length; j++) {
-            if (results[j].preview && artistMatches(artist, results[j].artist.name)) {
-              previewUrl = results[j].preview;
-              break;
-            }
-          }
-        }
+        // Call our server-side proxy (Deezer's API doesn't allow CORS)
+        var qs = '?artist=' + encodeURIComponent(artist) + '&title=' + encodeURIComponent(title);
+        var res = await fetch('/api/preview' + qs);
+        var data = await res.json();
+        var previewUrl = data && data.previewUrl;
 
         if (!previewUrl) {
           btn.querySelector('span').textContent = 'No preview';
