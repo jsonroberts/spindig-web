@@ -111,7 +111,7 @@ function renderFullCratePage(crate, slug) {
   <meta name="twitter:description" content="${escapeHtml(ogDescription)}">
   <meta name="twitter:image" content="${escapeHtml(ogImage)}">
 
-  <meta name="apple-itunes-app" content="app-id=6759798846, app-argument=${pageUrl}">
+  <meta name="apple-itunes-app" content="app-id=6759798846, app-argument=spindig://c/${escapeHtml(slug)}">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230d0d0d'/><circle cx='50' cy='50' r='44' fill='%23111' stroke='%231a1a1a' stroke-width='1'/><circle cx='50' cy='50' r='18' fill='%230d0d0d' stroke='%23222' stroke-width='1'/><circle cx='50' cy='50' r='5' fill='%23CC6B2C'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -788,7 +788,7 @@ function renderFallbackPage(slug) {
   <meta name="twitter:title" content="${escapeHtml(crateName)} — A Spindig Crate">
   <meta name="twitter:description" content="A curated vinyl crate on Spindig.">
 
-  <meta name="apple-itunes-app" content="app-id=6759798846, app-argument=${pageUrl}">
+  <meta name="apple-itunes-app" content="app-id=6759798846, app-argument=spindig://c/${escapeHtml(slug)}">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230d0d0d'/><circle cx='50' cy='50' r='44' fill='%23111' stroke='%231a1a1a' stroke-width='1'/><circle cx='50' cy='50' r='18' fill='%230d0d0d' stroke='%23222' stroke-width='1'/><circle cx='50' cy='50' r='5' fill='%23CC6B2C'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
