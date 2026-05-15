@@ -265,7 +265,6 @@ function renderFullCratePage(crate, slug) {
     .record-card {
       background: var(--bg-elevated);
       border-radius: 14px;
-      overflow: hidden;
       transition: background 0.15s ease;
     }
 
