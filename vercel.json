@@ -14,6 +14,7 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/support", "destination": "/support.html" },
     { "source": "/record/:id", "destination": "/api/record?id=:id" },
-    { "source": "/crate/:id", "destination": "/api/crate?id=:id" }
+    { "source": "/crate/:id", "destination": "/api/crate?id=:id" },
+    { "source": "/c/:id", "destination": "/api/crate?id=:id" }
   ]
 }

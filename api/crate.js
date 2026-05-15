@@ -80,7 +80,7 @@ function renderRecordCard(record, index) {
 }
 
 function renderFullCratePage(crate, slug) {
-  const pageUrl = `${DOMAIN}/crate/${escapeHtml(slug)}`;
+  const pageUrl = `${DOMAIN}/c/${escapeHtml(slug)}`;
   const records = crate.records || [];
   const ogImageUrl = `${DOMAIN}/api/og-image?slug=${encodeURIComponent(slug)}`;
   const fallbackOgImage = crate.cover_image_url || records[0]?.coverImageUrl || '';
@@ -794,7 +794,7 @@ function renderFallbackPage(slug) {
   const crateName = slug
     ? slug.replace(/-[a-z0-9]{4}$/, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
     : 'A Crate';
-  const pageUrl = `${DOMAIN}/crate/${escapeHtml(slug)}`;
+  const pageUrl = `${DOMAIN}/c/${escapeHtml(slug)}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
