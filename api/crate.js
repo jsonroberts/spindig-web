@@ -372,6 +372,10 @@ function renderFullCratePage(crate, slug) {
       position: relative;
     }
 
+    .buy-details[open] {
+      z-index: 100;
+    }
+
     .btn-buy {
       display: inline-flex;
       align-items: center;
